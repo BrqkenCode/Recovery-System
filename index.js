@@ -1,4 +1,5 @@
-const { Client, Collection, GatewayIntentBits, ActivityType, Events, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { Channel } = require('diagnostics_channel');
+const { Client, Collection, GatewayIntentBits, ActivityType, Events, EmbedBuilder, PermissionsBitField, Embed } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Permissions, ChannelType } = require('discord.js');
 const fs = require('fs');
@@ -34,7 +35,7 @@ client.on('ready', () => {
   const rulechan = client.channels.cache.get(ruleID);
   console.log(`Logged in as ${client.user.tag}`);
   client.user.setPresence({
-    activities: [{ name: `Recoverycord.com V1`, type: ActivityType.Watching }],
+    activities: [{ name: `Recovery-Studios V1`, type: ActivityType.Custom }],
     status: 'dnd',
   });
 
@@ -328,6 +329,83 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
+const userTicketChannels = new Map(); // Map to store user IDs and their corresponding ticket channel IDs
+
+client.on(Events.InteractionCreate, async interaction => {
+  if (!interaction.isStringSelectMenu()) return; // Check if the interaction is a select menu
+  const { customId, values, guild } = interaction;
+  
+  if (customId === 'store-options') {
+    async function createChan(guild, user, category, selectedOption) {
+      const categoryChannel = guild.channels.cache.get(category); // Get the CategoryChannel object
+      const userID = user.id;
+
+      if (userTicketChannels.has(userID)) {
+        const existingChannelID = userTicketChannels.get(userID);
+        try {
+          await interaction.reply({ content: `You already have an open ticket in <#${existingChannelID}>.`, ephemeral: true });
+        } catch (error) {
+          console.error('Error replying to interaction:', error);
+        }
+      } else {
+        const infoembed = new EmbedBuilder()
+          .setColor('Blue')
+          .setTitle('New Ticket')
+          .setDescription('Information below')
+          .addFields(
+            { name: 'User', value: `<@${interaction.member.user.id}>` },
+            { name: 'Inquiry', value: String(selectedOption) }
+          )
+          .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+          .setTimestamp()
+          .setFooter({ text: 'Recovery-Studio' });
+
+        const channel = await interaction.guild.channels.create({
+          name: `${interaction.user.username}-ticket`,
+          parent: categoryChannel, // Use the CategoryChannel object
+          type: ChannelType.GuildText,
+        permissionOverwrites: [
+          {
+            id: interaction.guild.id,
+            deny: [PermissionsBitField.Flags.ViewChannel],
+          },
+          {
+            id: interaction.user.id,
+            allow: [PermissionsBitField.Flags.ViewChannel],
+          },
+        ], 
+        });
+
+        await channel.send({ content: `<@${user.id}>`, embeds: [infoembed] });
+
+        userTicketChannels.set(userID, channel.id); // Store the user's ticket channel ID
+      }
+    }
+
+    // Get the value of the selected option
+    const selectedOption = values[0];
+    const categoryID = '1128279885736050808'; // Replace with the actual category ID
+
+    switch (selectedOption) {
+      case 'dcserver':
+      case 'dcbot':
+      case 'custom':
+        // Call createChan with relevant parameters
+        await createChan(guild, interaction.user, categoryID, selectedOption);
+        break;
+
+      default:
+        // Handle any unexpected values here
+        break;
+    }
+
+    try {
+      await interaction.reply({ content: 'Your ticket was opened successfully!', ephemeral: true });
+    } catch (error) {
+      console.error('Error replying to interaction:', error);
+    }
+  }
+});
 
 
 

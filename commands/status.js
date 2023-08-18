@@ -34,7 +34,7 @@ module.exports = {
       .setColor('#7289DA');
     
     for (const website of websiteStatuses) {
-      embed.addField(website.url, website.status, true);
+      embed.addFields(website.url, website.status, true);
     }
     
     interaction.reply({ embeds: [embed] });
