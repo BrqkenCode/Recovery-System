@@ -355,7 +355,8 @@ client.on(Events.InteractionCreate, async interaction => {
           .setDescription('Information below')
           .addFields(
             { name: 'User', value: `<@${interaction.member.user.id}>` },
-            { name: 'Inquiry', value: String(selectedOption) }
+            { name: 'Inquiry', value: String(selectedOption) },
+            { name:'Order-ID', value: '**'+shortid.generate()+'**'}
           )
           .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
           .setTimestamp()
@@ -388,9 +389,9 @@ client.on(Events.InteractionCreate, async interaction => {
     const categoryID = '1128279885736050808'; // Replace with the actual category ID
 
     switch (selectedOption) {
-      case 'dcserver':
-      case 'dcbot':
-      case 'custom':
+      case 'Discord-Server':
+      case 'Discord-Bot':
+      case 'Custom':
         // Call createChan with relevant parameters
         await createChan(guild, interaction.user, categoryID, selectedOption);
         break;

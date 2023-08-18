@@ -22,17 +22,17 @@ module.exports = {
         new StringSelectMenuOptionBuilder()
         .setLabel('Discord-Server')
         .setDescription('Fully setup Discord Server')
-        .setValue('dcserver'),
+        .setValue('Discord-Server'),
 
         new StringSelectMenuOptionBuilder()
         .setLabel('Discord-Bot')
         .setDescription('Custom Discord Bot')
-        .setValue('dcbot'),
+        .setValue('Discord-Bot'),
 
         new StringSelectMenuOptionBuilder()
         .setLabel('Other')
         .setDescription('Tell us your idea')
-        .setValue('custom')
+        .setValue('Custom')
     );
     const row = new ActionRowBuilder()
         .addComponents(selectmenu);
