@@ -60,7 +60,7 @@ client.on('ready', () => {
     { name: '14. Compliance with Discord Terms of Service', value: 'Abide by the Discord Terms of Service and Community Guidelines. Any violation of these terms may result in punitive measures, including temporary or permanent suspension from the community.' },
     { name: '15. Enforcement and Moderation', value: 'The staff members reserve the right to enforce rules, issue warnings, and apply appropriate penalties for violations. Respect their decisions and engage in discussions about rule enforcement privately, if necessary.' }
   )
-  .setFooter({text:'Recovery Cord - Server Rules'});
+  .setFooter({text:'Recovery Studios - Server Rules'});
 
   const embed = new EmbedBuilder()
   .setTitle('About us')
