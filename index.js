@@ -2,6 +2,7 @@ const { Channel } = require('diagnostics_channel');
 const { Client, Collection, GatewayIntentBits, ActivityType, Events, EmbedBuilder, PermissionsBitField, Embed } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Permissions, ChannelType } = require('discord.js');
+const shortid = require('shortid');
 const fs = require('fs');
 const { da } = require('translate-google/languages');
 const client = new Client({ intents: [ 
