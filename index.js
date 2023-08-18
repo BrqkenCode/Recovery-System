@@ -4,6 +4,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Permissions, ChannelType } = require('discord.js');
 const shortid = require('shortid');
 const fs = require('fs');
+const path = require('path');
 const { da } = require('translate-google/languages');
 const client = new Client({ intents: [ 
   GatewayIntentBits.Guilds,
@@ -322,11 +323,8 @@ client.on(Events.InteractionCreate, async interaction => {
           interaction.deferReply();
           interaction.channel.delete()
         }
-       
-
+      
       });
-
-
   }
 });
 
@@ -350,13 +348,14 @@ client.on(Events.InteractionCreate, async interaction => {
         }
       } else {
         const infoembed = new EmbedBuilder()
+      
           .setColor('Blue')
           .setTitle('New Ticket')
           .setDescription('Information below')
           .addFields(
             { name: 'User', value: `<@${interaction.member.user.id}>` },
             { name: 'Inquiry', value: String(selectedOption) },
-            { name:'Order-ID', value: '**'+shortid.generate()+'**'}
+            { name:'Order-ID', value: shortid.generate()}
           )
           .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
           .setTimestamp()
@@ -408,6 +407,66 @@ client.on(Events.InteractionCreate, async interaction => {
     }
   }
 });
+
+
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isButton()) return;
+
+  await interaction.deferReply();
+
+  if (interaction.customId === 'confirm' || interaction.customId === 'cancel') {
+    const clientuser = interaction.message.embeds[0].fields[0].value.replace('<@', '').replace('>', '').replace('!', '');
+    const oID = interaction.message.embeds[0].fields[1].value;
+    const bottyp = interaction.message.embeds[0].fields[2].value;
+
+    const requiredRole = interaction.member.roles.cache.some(role => role.name === '「 👑」Management');
+    if (!requiredRole) {
+      return interaction.reply('You do not have permission to use this command.');
+    }
+
+   
+
+
+    const order = { id: oID, userid: clientuser, reqs: bottyp, status: 'Not started yet'};
+    saveOrderToFile(order);
+
+    const embed = new EmbedBuilder()
+    .setColor('Green')
+    .setTitle('Order Stored')
+    .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
+    .setThumbnail('https://us-east-1.tixte.net/uploads/files.brqkencode.de/dclogo.png?AWSAccessKeyId=WHPVCLA8APE07J047F9D&Expires=1688990541&Signature=hzObFrZAW8RgMFCE2%2BttcumoYS0%3D')
+    .setTimestamp()
+    .setFooter({ text: 'Recovery-Studio' });
+
+    if (interaction.customId === 'confirm') {
+      await interaction.followUp({embeds: [embed]});
+    } else if (interaction.customId === 'cancel') {
+      const decembed = new EmbedBuilder()
+      .setColor('Red')
+      .setTitle('Order Canceled')
+      .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
+      .setTimestamp()
+      .setFooter('Recovery-Studio');
+      await interaction.followUp({embeds: [embed]});
+    }
+  }
+});
+
+function saveOrderToFile(order) {
+  const orders = loadOrdersFromFile();
+  orders.push(order);
+  fs.writeFileSync(path.join(__dirname, 'orders.json'), JSON.stringify(orders, null, 2), 'utf8');
+}
+
+function loadOrdersFromFile() {
+  try {
+    const data = fs.readFileSync(path.join(__dirname, 'orders.json'), 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    console.error('Error reading orders.json:', err);
+    return [];
+  }
+}
 
 
 
