@@ -29,7 +29,7 @@ module.exports = {
         const changelog = options.getString('message');
 
         interaction.deferReply();
-
+        interaction.deleteReply();
         const requiredRole = member.roles.cache.some((role) => role.name === '「 👑」Management');
         if (!requiredRole) {
             return interaction.reply('You do not have permission to use this command.');
