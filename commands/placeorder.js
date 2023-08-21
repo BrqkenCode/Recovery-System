@@ -24,6 +24,12 @@ module.exports ={
             type: 3,
             required: true,
         },
+        {
+            name: 'payment',
+            description: 'Name the payment method',
+            type: 3,
+            required: true,
+        },
        
 
           
@@ -33,6 +39,7 @@ module.exports ={
 		const clientuser = interaction.options.getUser('client');
 		const oID = interaction.options.getString('order-id')
         const bottyp = interaction.options.getString('application')
+        const paymethod = interaction.options.getString('payment');
 
 
 		const confirm = new ButtonBuilder()
@@ -56,7 +63,8 @@ module.exports ={
         .addFields(
             { name: 'Client', value: clientuser ? `<@${clientuser.id}>` : 'Unknown Client' },
             { name: 'Order-ID', value: oID ?  oID: 'Unknown Order ID' },
-            { name: 'Bot-Type', value: bottyp ? bottyp : 'Unknown Bot Type' }
+            { name: 'Bot-Type', value: bottyp ? bottyp : 'Unknown Bot Type' },
+            { name: 'Payment method', value: paymethod ? paymethod: 'Not specified'}
         )
         .setThumbnail('https://us-east-1.tixte.net/uploads/files.brqkencode.de/dclogo.png?AWSAccessKeyId=WHPVCLA8APE07J047F9D&Expires=1688990541&Signature=hzObFrZAW8RgMFCE2%2BttcumoYS0%3D')
         .setTimestamp()

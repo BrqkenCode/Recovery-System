@@ -408,47 +408,54 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
-
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isButton()) return;
 
-  await interaction.deferReply();
-
   if (interaction.customId === 'confirm' || interaction.customId === 'cancel') {
-    const clientuser = interaction.message.embeds[0].fields[0].value.replace('<@', '').replace('>', '').replace('!', '');
-    const oID = interaction.message.embeds[0].fields[1].value;
-    const bottyp = interaction.message.embeds[0].fields[2].value;
+      const clientuser = interaction.message.embeds[0].fields[0].value.replace('<@', '').replace('>', '').replace('!', '');
+      const oID = interaction.message.embeds[0].fields[1].value;
+      const bottyp = interaction.message.embeds[0].fields[2].value;
+      const payment = interaction.message.embeds[0].fields[3].value;
 
-    const requiredRole = interaction.member.roles.cache.some(role => role.name === '「 👑」Management');
-    if (!requiredRole) {
-      return interaction.reply('You do not have permission to use this command.');
-    }
+      // Your permission check
+      const requiredRole = interaction.member.roles.cache.some(role => role.name === '「 👑」Management');
+      if (!requiredRole) {
+          return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
+      }
 
-   
+      const order = { id: oID, userid: clientuser, reqs: bottyp, payment: payment, status: 'Not started yet' };
+      // Your saveOrderToFile logic here
 
+      const embed = new EmbedBuilder()
+          .setColor('Green')
+          .setTitle('Order Stored')
+          .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
+          .setThumbnail('https://us-east-1.tixte.net/uploads/files.brqkencode.de/dclogo.png?AWSAccessKeyId=WHPVCLA8APE07J047F9D&Expires=1688990541&Signature=hzObFrZAW8RgMFCE2%2BttcumoYS0%3D')
+          .setTimestamp()
+          .setFooter({text:'Recovery-Studio'});
 
-    const order = { id: oID, userid: clientuser, reqs: bottyp, status: 'Not started yet'};
-    saveOrderToFile(order);
-
-    const embed = new EmbedBuilder()
-    .setColor('Green')
-    .setTitle('Order Stored')
-    .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
-    .setThumbnail('https://us-east-1.tixte.net/uploads/files.brqkencode.de/dclogo.png?AWSAccessKeyId=WHPVCLA8APE07J047F9D&Expires=1688990541&Signature=hzObFrZAW8RgMFCE2%2BttcumoYS0%3D')
-    .setTimestamp()
-    .setFooter({ text: 'Recovery-Studio' });
-
-    if (interaction.customId === 'confirm') {
-      await interaction.followUp({embeds: [embed]});
-    } else if (interaction.customId === 'cancel') {
       const decembed = new EmbedBuilder()
-      .setColor('Red')
-      .setTitle('Order Canceled')
-      .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
-      .setTimestamp()
-      .setFooter('Recovery-Studio');
-      await interaction.followUp({embeds: [embed]});
-    }
+          .setColor('Red')
+          .setTitle('Order Canceled')
+          .setDescription(`Order ID: ${order.id}\nBot Type: ${order.reqs}`)
+          .setTimestamp()
+          .setFooter({text:'Recovery-Studio'});
+
+      // Update the original message to remove buttons
+      const originalMessage = interaction.message;
+      const newEmbed = originalMessage.embeds[0];
+      newEmbed.fields.pop(); // Remove the buttons field
+
+      await originalMessage.edit({ embeds: [newEmbed], components: [] }); // Remove components
+
+      // Send the response using interaction.reply() with ephemeral
+      if (interaction.customId === 'confirm') {
+          await interaction.reply({ content: 'Order Stored', embeds: [embed], ephemeral: false });
+          await originalMessage.delete();
+      } else if (interaction.customId === 'cancel') {
+          await interaction.reply({ content: 'Order Canceled', embeds: [decembed], ephemeral: false });
+          await originalMessage.delete();
+      }
   }
 });
 

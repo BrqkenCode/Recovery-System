@@ -13,14 +13,14 @@ module.exports = {
     const latstring = latency.toString(); // Convert the latency value to a string
     const embed = new EmbedBuilder()
       .setColor(0x0099FF)
-      .setTitle('Ping')
-      .setDescription("Look at our Ping :)")
+      .setTitle('Pricing information')
+      .setDescription("Take a look at the pricing below")
       .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .addFields(
         { name: 'Ping in ms', value: latstring }
       )
       .setTimestamp()
-      .setFooter({ text: 'Recoverycord'});
+      .setFooter({ text: 'Recovery Studio'});
     
       
     interaction.deleteReply();
