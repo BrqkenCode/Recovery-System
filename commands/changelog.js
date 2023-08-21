@@ -28,6 +28,7 @@ module.exports = {
         const channel = options.getChannel('channel');
         const changelog = options.getString('message');
 
+        interaction.deferReply();
 
         const requiredRole = member.roles.cache.some((role) => role.name === '「 👑」Management');
         if (!requiredRole) {
