@@ -478,6 +478,7 @@ client.on('interactionCreate', async (interaction) => {
       newEmbed.fields.pop(); // Remove the buttons field
 
       await originalMessage.edit({ embeds: [newEmbed], components: [] }); // Remove components
+      saveOrderToFile(order)
 
       // Send the response using interaction.reply() with ephemeral
       if (interaction.customId === 'confirm') {
