@@ -65,21 +65,9 @@ client.on('ready', () => {
   )
   .setFooter({text:'Recovery Studios - Server Rules'});
 
-  const embed = new EmbedBuilder()
-  .setTitle('About us')
-  .setDescription("Welcome to Recovery Cord! We are a Discord community dedicated to helping you backup and protect your server.")
-  .setColor('#7289DA')
-  .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
-  .addFields(
-    { name: 'Advanced Backup System', value: 'With our advanced backup system, you can securely save essential server elements such as member lists, ban records, messages, and server settings. We understand the importance of safeguarding your community\'s data.' },
-    { name: 'Anti-VPN and Proxy System', value: 'In addition to our backup services, we also provide an advanced Anti-VPN and Proxy system. This feature helps maintain a secure environment by detecting and preventing potential threats posed by VPNs and proxies, ensuring the integrity of your server.' },
-    { name: 'Prioritizing Security', value: 'At Recovery Cord, we prioritize the security and well-being of your Discord server. Our dedicated team is committed to providing reliable and efficient solutions to safeguard your community.' },
-    { name: 'Join us today', value: 'Join us today and experience the peace of mind that comes with having a robust backup and protection system in place.' }
-  )
-  .setFooter({text: 'Recovery Cord - Backup and Protection Services'});
+
   rulechan.bulkDelete(1);
-  aboutchannel.bulkDelete(1);
-  aboutchannel.send({embeds: [embed]})
+
   rulechan.send({embeds: [rulemb]})
 });
 
@@ -560,6 +548,12 @@ client.on('guildMemberAdd', (member) => {
  
 
 });
+
+
+
+
+
+
 
 
 client.login("MTEyNjExNzQxMzEwMDk3ODI0Ng.GtuYLo.RDnfQa2rN_AFiDoLkFZIuiLVQ9DYaVkqduys5o");
