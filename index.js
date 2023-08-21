@@ -1,5 +1,5 @@
 const { Channel } = require('diagnostics_channel');
-const { Client, Collection, GatewayIntentBits, ActivityType, Events, EmbedBuilder, PermissionsBitField, Embed } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, ActivityType, Events, EmbedBuilder, PermissionsBitField, Embed, StringSelectMenuBuilder } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Permissions, ChannelType } = require('discord.js');
 const shortid = require('shortid');
@@ -333,8 +333,62 @@ const userTicketChannels = new Map(); // Map to store user IDs and their corresp
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isStringSelectMenu()) return; // Check if the interaction is a select menu
   const { customId, values, guild } = interaction;
-  
+  const selectedOption = values[0];
   if (customId === 'store-options') {
+    // Get the value of the selected option
+    
+   // Replace with the actual category ID
+    let newMenuOptions = [];
+
+    switch (selectedOption) {
+
+      case 'Discord-Server':
+        newMenuOptions=[
+          {label: 'Server-Template', value:'servertemplate'},
+          {label:'Server-Setup', value:'serversetup'},
+          {label: 'Custom package',description:'?Invites/mo', value:'customserver'}
+        ]
+        
+        break;
+
+      case 'Discord-Bot':
+        newMenuOptions=[
+          {label: 'System-Bot', description:'10 Invites/mo',value:'System-Bot'},
+          {label: 'Moderation-Bot',description:'10 Invites/mo', value:'Moderation-Bot'},
+          {label: 'Support-Bot',description:'10 Invites/mo', value:'Support-Bot'},
+          {label: 'Fun-Bot',description:'5 Invites/mo', value:'Fun-Bot'},
+          {label: 'Administration-Bot',description:'5 Invites/mo', value:'Administration-Bot'},
+
+        ]
+        
+        break;
+      case 'Custom':
+        newMenuOptions=[
+          {label: 'Custom package',description:'? Invites/mo', value:'custom'}
+        ]
+        
+        
+        break;
+
+      default:
+        // Handle any unexpected values here
+        break;
+        
+    }
+    const newSelectMenu = new StringSelectMenuBuilder()
+      .setCustomId('sub-menu')
+      .addOptions(newMenuOptions);
+
+    await interaction.reply({
+      content: 'Select an option to proceed:',
+      ephemeral: true,
+      components: [{ type: 1, components: [newSelectMenu] }],
+    });
+    
+    
+  
+  }else if (customId === 'sub-menu'){
+    const categoryID = '1128279885736050808';
     async function createChan(guild, user, category, selectedOption) {
       const categoryChannel = guild.channels.cache.get(category); // Get the CategoryChannel object
       const userID = user.id;
@@ -381,30 +435,19 @@ client.on(Events.InteractionCreate, async interaction => {
 
         userTicketChannels.set(userID, channel.id); // Store the user's ticket channel ID
       }
+   
     }
+    await createChan(guild, interaction.user, categoryID, selectedOption);
 
-    // Get the value of the selected option
-    const selectedOption = values[0];
-    const categoryID = '1128279885736050808'; // Replace with the actual category ID
-
-    switch (selectedOption) {
-      case 'Discord-Server':
-      case 'Discord-Bot':
-      case 'Custom':
-        // Call createChan with relevant parameters
-        await createChan(guild, interaction.user, categoryID, selectedOption);
-        break;
-
-      default:
-        // Handle any unexpected values here
-        break;
-    }
-
+   
+    
+    
     try {
       await interaction.reply({ content: 'Your ticket was opened successfully!', ephemeral: true });
     } catch (error) {
       console.error('Error replying to interaction:', error);
     }
+
   }
 });
 

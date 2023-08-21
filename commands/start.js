@@ -33,6 +33,10 @@ module.exports = {
         const orderID = interaction.options.getString('order_id');
         const newStatus = interaction.options.getString('status');
 
+        const requiredRole = member.roles.cache.some(role => role.name === '「 👑」Management');
+        if (!requiredRole) {
+          return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
+        }
         const filePath = path.join(__dirname,'../', 'orders.json');
         const orders = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
