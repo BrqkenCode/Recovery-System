@@ -5,6 +5,7 @@ const { Permissions, ChannelType } = require('discord.js');
 const shortid = require('shortid');
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require('child_process');
 const { da } = require('translate-google/languages');
 const client = new Client({ intents: [ 
   GatewayIntentBits.Guilds,
@@ -18,6 +19,21 @@ const client = new Client({ intents: [
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+const childProcess = spawn('node', ['slashcommandHandler.js']);
+
+childProcess.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+childProcess.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+childProcess.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+
 
 for (const file of commandFiles) {
   try {
