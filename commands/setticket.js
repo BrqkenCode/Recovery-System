@@ -37,7 +37,7 @@ module.exports = {
       .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .setTimestamp()
       .addFields({ name: 'Note', value: 'It may take some time for your ticket to be processed!' })
-      .setFooter({ text: 'Recoverycord' });
+      .setFooter({ text: 'Recovery Studio' });
     
     const requiredRole = member.roles.cache.some((role) => role.name === '「 👑」Management');
     if (!requiredRole) {

@@ -62,7 +62,7 @@ module.exports = {
       )
       .setTimestamp()
       .addFields({ name: 'Note', value: 'Please create this request at least 3 days before your vacation!' })
-      .setFooter({ text: 'Recoverycord' });
+      .setFooter({ text: 'Recovery Studio' });
 
     const requiredRole = member.roles.cache.some((role) => role.name === '「 👑」Management');
     if (!requiredRole) {

@@ -37,7 +37,7 @@ module.exports = {
         { name: 'Information', value: word }
       )
       .setTimestamp()
-      .setFooter({ text: 'Recoverycord'});
+      .setFooter({ text: 'Recovery Studio'});
 
       const requiredRole = member.roles.cache.some(role => role.name === '「 👑」Management');
       if (!requiredRole) {

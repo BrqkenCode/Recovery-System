@@ -80,7 +80,7 @@ module.exports ={
                 )
                 .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
                 .setTimestamp()
-                .setFooter({ text: 'Recoverycord'});
+                .setFooter({ text: 'Recovery Studio'});
                 if (e == null){
                     await client.channels.cache.get(log).send({embeds: [logembed]})
                 }
