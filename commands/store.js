@@ -60,13 +60,13 @@ module.exports = {
           description: "Uncover speedy responses about the order process. Dive into the varied functions and frameworks of our bots within the linked selection menu."
         }, {
           title: "Ways to Pay 💳",
-          description: "We provide assorted pathways for payments: donations, Boosts, or Invites. Choose what aligns with your preferences."
+          description: "We provide assorted pathways for payments:  Boosts or Invites. Choose what aligns with your preferences."
         }, {
           title: "Backing Assistance 🤲",
           description: "Your kind-hearted contributions, be it donations or alternative routes, play a vital part in upholding our hosting services. Your backing aids us in sustaining top-tier service."
         }, {
           title: "Delivered Services 🔧",
-          description: "Experience uninterrupted service via our gratis 24/7 bot availability, systematic updates, and TOP-TIER IMMEDIATE AID! Our committed team is at the ready 24/7 to deliver the guidance you need."
+          description: "Experience uninterrupted service via our free 24/7 bot availability, systematic updates, and TOP-TIER IMMEDIATE AID! Our committed team is at the ready 24/7 to deliver the guidance you need."
         }, {
           title: "Seeking Aid? 🆘",
           description: "For aid, venture to ⁠⁠⟫-ticket-support. Our support squad stands equipped to furnish speedy solutions to queries or hurdles you encounter."
