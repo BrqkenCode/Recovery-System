@@ -291,6 +291,11 @@ client.on(Events.InteractionCreate, async interaction => {
       const requiredRole = interaction.member.roles.cache.some((role) => role.name === '「 👑」Management');
       const rID = "855179067388461076"
       chann.send({content: ` <@${interaction.member.user.id}>`, embeds: [embed], components: [row]})
+      try {
+        await interaction.reply({ content: 'Your ticket was opened successfully!', ephemeral: true });
+      } catch (error) {
+        console.error('Error replying to interaction:', error);
+      }
 
       
     
