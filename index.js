@@ -413,7 +413,8 @@ client.on(Events.InteractionCreate, async interaction => {
           .addFields(
             { name: 'User', value: `<@${interaction.member.user.id}>` },
             { name: 'Inquiry', value: String(selectedOption) },
-            { name:'Order-ID', value: shortid.generate()}
+            { name:'Order-ID', value: shortid.generate()},
+            {name:'**NOTE**', value: 'All orders are currently preorders!'}
           )
           .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
           .setTimestamp()
