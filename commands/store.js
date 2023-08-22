@@ -20,17 +20,17 @@ module.exports = {
     .setPlaceholder('Please choose one of the options below!')
     .addOptions(
         new StringSelectMenuOptionBuilder()
-        .setLabel('Discord-Server')
+        .setLabel('👻 Discord-Server')
         .setDescription('Fully setup Discord Server')
         .setValue('Discord-Server'),
 
         new StringSelectMenuOptionBuilder()
-        .setLabel('Discord-Bot')
+        .setLabel('🤖 Discord-Bot')
         .setDescription('Custom Discord Bot')
         .setValue('Discord-Bot'),
 
         new StringSelectMenuOptionBuilder()
-        .setLabel('Other')
+        .setLabel('🎫 Other')
         .setDescription('Tell us your idea')
         .setValue('Custom')
     );
