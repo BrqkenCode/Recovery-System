@@ -367,6 +367,7 @@ client.on(Events.InteractionCreate, async interaction => {
           {label: 'Support-Bot',description:'10 Invites/mo', value:'Support-Bot'},
           {label: 'Fun-Bot',description:'5 Invites/mo', value:'Fun-Bot'},
           {label: 'Administration-Bot',description:'5 Invites/mo', value:'Administration-Bot'},
+          {label: 'Custom Bot ', description: 'custom pricing/month', value:'Custom-Bot'}
 
         ]
         
