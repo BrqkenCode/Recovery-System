@@ -34,7 +34,6 @@ module.exports = {
       .setColor('#0099ff') // Set a valid color value (e.g., hexadecimal color code)
       .setTitle('Ticket')
       .setDescription('To open a support ticket, please select the type of problem you are experiencing:')
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .setTimestamp()
       .addFields({ name: 'Note', value: 'It may take some time for your ticket to be processed!' })
       .setFooter({ text: 'Recovery Studio' });

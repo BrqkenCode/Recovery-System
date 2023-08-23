@@ -15,7 +15,6 @@ module.exports = {
       .setColor(0x0099FF)
       .setTitle('Pricing information')
       .setDescription("Take a look at the pricing below")
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .addFields(
         { name: 'Ping in ms', value: latstring }
       )

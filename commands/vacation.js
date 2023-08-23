@@ -57,9 +57,7 @@ module.exports = {
       .setDescription(
         "If you are going to be unavailable for a period of time, please write out a vacation request here. For example, if you are going on vacation soon, if you're currently under a lot of stress at school, etc., you can request a vacation. Providing information about your vacation to the team allows us to plan things accordingly for the staff team."
       )
-      .setThumbnail(
-        'https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png'
-      )
+
       .setTimestamp()
       .addFields({ name: 'Note', value: 'Please create this request at least 3 days before your vacation!' })
       .setFooter({ text: 'Recovery Studio' });

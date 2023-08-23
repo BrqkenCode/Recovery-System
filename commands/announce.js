@@ -27,11 +27,9 @@ module.exports = {
       const { member, options } = interaction;
       const channel = options.getChannel('channel');
       const word = options.getString('message');
-      const thumbnailUrl = 'https://files.brqkencode.de/dclogo.png?t=zMiZXCMfD52mWhIk.n0RFifmAXBlMufT0gYg0b7h0TMUzKOC4pEwz'
       const embed = new EmbedBuilder()
       .setColor(0x0099FF)
-      .setTitle('Announcement')
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+      .setTitle('Announcement'))
       .setDescription("Please carefully read the provided information below.")
       .addFields(
         { name: 'Information', value: word }

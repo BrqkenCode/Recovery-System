@@ -25,7 +25,6 @@ module.exports = {
       .setColor('#E67E22')
       .setTitle('User Warnings')
       .setDescription(`Showing the number of warnings for ${userOption}`)
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .setTimestamp();
 
     if (!user) {

@@ -36,7 +36,6 @@ module.exports = {
       .setColor('#E67E22')
       .setTitle('Warning')
       .setDescription("You have been warned! Please watch your language and behavior.")
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .addFields(
         { name: 'Reason', value: reason },
         { name: 'Staff Member', value: `<@${member.user.id}>` }

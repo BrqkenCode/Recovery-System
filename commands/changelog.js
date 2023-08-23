@@ -43,7 +43,6 @@ module.exports = {
         .addFields({
             name:'Changes:', value: changelog
         })
-        .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
         .setTimestamp()
         .setFooter({ text: 'Recovery Studio'});
 

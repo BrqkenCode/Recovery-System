@@ -19,7 +19,7 @@ module.exports = {
       .setColor('#0099FF')
       .setTitle('Pricing Information')
       .setDescription('Take a look at the pricing below')
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+
       .addFields(
         { name: 'System Bot', value: '10 Invites/Month',inline: true},
         { name: 'Ticketing', value: '10 Invites/Month',inline: true },

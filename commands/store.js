@@ -44,7 +44,6 @@ module.exports = {
       .setColor('#171bd3')
       .setTitle('Store-options')
       .setDescription("If you are intersted in a bot or something else, take a look at the options below.")
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .setTimestamp();
 
     const requiredRole = member.roles.cache.some(role => role.name === '「 👑」Management');

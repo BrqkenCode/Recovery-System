@@ -38,7 +38,6 @@ module.exports = {
       .setColor(0x0099FF)
       .setTitle('Translation')
       .setDescription("Please carefully read the provided information below. There can always be typing errors.")
-      .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
       .addFields(
         { name: 'Translation', value: translated }
       )
