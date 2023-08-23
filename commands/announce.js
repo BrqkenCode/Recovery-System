@@ -29,7 +29,7 @@ module.exports = {
       const word = options.getString('message');
       const embed = new EmbedBuilder()
       .setColor(0x0099FF)
-      .setTitle('Announcement'))
+      .setTitle('Announcement')
       .setDescription("Please carefully read the provided information below.")
       .addFields(
         { name: 'Information', value: word }
