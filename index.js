@@ -355,26 +355,26 @@ client.on(Events.InteractionCreate, async interaction => {
         newMenuOptions=[
           {label: 'Server-Template', value:'servertemplate'},
           {label:'Server-Setup', value:'serversetup'},
-          {label: 'Custom package',description:'?Invites/mo', value:'customserver'}
+          {label: 'Custom package', value:'customserver'}
         ]
         
         break;
 
       case 'Discord-Bot':
         newMenuOptions=[
-          {label: 'System-Bot', description:'10 Invites/mo',value:'System-Bot'},
-          {label: 'Moderation-Bot',description:'10 Invites/mo', value:'Moderation-Bot'},
-          {label: 'Support-Bot',description:'10 Invites/mo', value:'Support-Bot'},
-          {label: 'Fun-Bot',description:'5 Invites/mo', value:'Fun-Bot'},
-          {label: 'Administration-Bot',description:'5 Invites/mo', value:'Administration-Bot'},
-          {label: 'Custom Bot ', description: 'custom pricing/month', value:'Custom-Bot'}
+          {label: 'System-Bot', value:'System-Bot'},
+          {label: 'Moderation-Bot', value:'Moderation-Bot'},
+          {label: 'Support-Bot', value:'Support-Bot'},
+          {label: 'Fun-Bot', value:'Fun-Bot'},
+          {label: 'Administration-Bot',value:'Administration-Bot'},
+          {label: 'Custom Bot ',  value:'Custom-Bot'}
 
         ]
         
         break;
       case 'Custom':
         newMenuOptions=[
-          {label: 'Custom package',description:'? Invites/mo', value:'custom'}
+          {label: 'Custom package', value:'custom'}
         ]
         
         
