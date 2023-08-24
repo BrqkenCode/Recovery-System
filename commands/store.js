@@ -57,10 +57,7 @@ module.exports = {
         embeds: [{
           title: "Common Inquiries (FAQ) 🔍",
           description: "Uncover speedy responses about the order process. Dive into the varied functions and frameworks of our bots within the linked selection menu."
-        }, {
-          title: "Ways to Pay 💳",
-          description: "We provide assorted pathways for payments:  Boosts or Invites. Choose what aligns with your preferences."
-        }, {
+        },  {
           title: "Backing Assistance 🤲",
           description: "Your kind-hearted contributions, be it donations or alternative routes, play a vital part in upholding our hosting services. Your backing aids us in sustaining top-tier service."
         }, {
