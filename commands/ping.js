@@ -19,7 +19,6 @@ module.exports = {
         { name: 'Ping in ms', value: latstring }
       )
       .setTimestamp()
-      .setFooter({ text: 'Recovery Studio'});
     
       
     interaction.deleteReply();

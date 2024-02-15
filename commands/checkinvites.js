@@ -35,7 +35,7 @@ module.exports = {
         {name:'Invites : ', value: String(count)}
       )
       .setTimestamp()
-      .setFooter({text:'Recovery-Studio'})
+     
 
       interaction.reply({embeds: [embed]})
 

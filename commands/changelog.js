@@ -44,7 +44,7 @@ module.exports = {
             name:'Changes:', value: changelog
         })
         .setTimestamp()
-        .setFooter({ text: 'Recovery Studio'});
+
 
 
         await channel.send({embeds:[changelogembed]})

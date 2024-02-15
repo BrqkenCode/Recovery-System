@@ -22,7 +22,7 @@ module.exports = {
     try {
       const messages = await channel.messages.fetch({ limit: amount });
       await channel.bulkDelete(messages);
-      return interaction.reply('Channel purged successfully.');
+      return interaction.reply('Channel purged successfully.', ephemeral= true);
     } catch (error) {
       console.error('Error purging channel:', error);
       return interaction.reply('An error occurred while purging the channel.');

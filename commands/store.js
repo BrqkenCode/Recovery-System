@@ -43,7 +43,7 @@ module.exports = {
     const embed = new EmbedBuilder() // Changed from EmbedBuilder
       .setColor('#171bd3')
       .setTitle('Store-options')
-      .setDescription("If you are intersted in a bot or something else, take a look at the options below.")
+      .setDescription("If you are interested in a bot or something else, take a look at the options below.")
       .setTimestamp();
 
     const requiredRole = member.roles.cache.some(role => role.name === '「 👑」Management');

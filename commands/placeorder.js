@@ -67,7 +67,7 @@ module.exports ={
             { name: 'Payment method', value: paymethod ? paymethod: 'Not specified'}
         )
         .setTimestamp()
-        .setFooter({ text: 'Recovery-Studio'});
+      
           
 
 		const response = await interaction.reply({

@@ -86,7 +86,7 @@ module.exports = {
           .setTitle('New Botticket')
           .setDescription('Please let us know, what problem you are expieriencing with our bot.')
           .setColor('Blue')
-          .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+         
           .setTimestamp();
           const requiredRole = interaction.member.roles.cache.some((role) => role.name === '「 👑」Management');
           const rID = "855179067388461076";
@@ -116,7 +116,7 @@ module.exports = {
           .setTitle('New Bugticket')
           .setDescription('Please let us know, what bug you have found!')
           .setColor('Blue')
-          .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+          
           .setTimestamp();
           const requiredRole = interaction.member.roles.cache.some((role) => role.name === '「 👑」Management');
           const rID = "855179067388461076";
@@ -146,7 +146,7 @@ module.exports = {
           .setTitle('Ticket')
           .setDescription('Please let us know,how we can help you!')
           .setColor('Blue')
-          .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+         
           .setTimestamp();
           const requiredRole = interaction.member.roles.cache.some((role) => role.name === '「 👑」Management');
           const rID = "855179067388461076";
@@ -176,7 +176,7 @@ module.exports = {
           .setTitle('Application')
           .setDescription('Please read the necessary data info!')
           .setColor('Blue')
-          .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+          
           .addFields(
             {name:'Requirements', value:'Write a document with an application!'},
             {name: 'Questions (in addition to the doc)',value:'Why should we choose you?, What are your weaknesses?'}

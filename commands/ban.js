@@ -47,9 +47,9 @@ module.exports ={
             { name: 'User', value:  `<@${target.id}>`},
             { name: 'Reason', value: reason }
         )
-        .setThumbnail('https://us-east-1.tixte.net/uploads/files.brqkencode.de/dclogo.png?AWSAccessKeyId=WHPVCLA8APE07J047F9D&Expires=1688990541&Signature=hzObFrZAW8RgMFCE2%2BttcumoYS0%3D')
+       
         .setTimestamp()
-        .setFooter({ text: 'Recoverycord'});
+
           
 
 		const response = await interaction.reply({
@@ -78,9 +78,9 @@ module.exports ={
                     { name: 'Reason', value: reason },
                     { name: 'Staff Member', value:  `<@${interaction.member.user.id}>`}
                 )
-                .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+                
                 .setTimestamp()
-                .setFooter({ text: 'Recovery Studio'});
+             
                 if (e == null){
                     await client.channels.cache.get(log).send({embeds: [logembed]})
                 }
@@ -90,9 +90,9 @@ module.exports ={
                 .setColor('Red')
                 .setTitle('Canceled!')
                 .setDescription('Th ban has been canceled!')
-                .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
+              
                 .setTimestamp()
-                .setFooter({ text: 'Recoverycord'});
+                
                 await confirmation.update({ embeds: [canembned] });
             }
         } catch (e) {

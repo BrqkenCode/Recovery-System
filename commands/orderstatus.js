@@ -43,7 +43,7 @@ module.exports = {
             {name:'Inquiry',  value: order.reqs},
             {name:'Status',   value: order.status || 'Not provided'}
         )
-        .setFooter({text: 'Recovery-Studio'})
+
         .setTimestamp();
         
 
