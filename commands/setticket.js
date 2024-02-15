@@ -62,13 +62,13 @@ module.exports = {
       const selectedValue = interaction.values[0];
       if (selectedValue === 'bot') {
         
-        const categoryID = '1128279885736050808';
+        const categoryID = '1206694812456329238';
 
       
         (async () => {
           const channel = await interaction.guild.channels.create({
             name: `${interaction.user.username}-bugicket`,
-            parent: categoryID,
+            parent: '1206694812456329238',
             type: ChannelType.GuildText,
             permissionOverwrites: [
               {
@@ -93,12 +93,12 @@ module.exports = {
           await channel.send({ content: `<@${interaction.member.user.id}>`, embeds:[bugembed] });
         })
     }else if (selectedValue === 'bug') {
-        const categoryID = '1128279885736050808';
+        const categoryID = '11206694812456329238';
       
         (async () => {
           const channel = await interaction.guild.channels.create({
             name: `${interaction.user.username}-bugticket`,
-            parent: categoryID,
+            parent: '1206694812456329238',
             type: ChannelType.GuildText,
             permissionOverwrites: [
               {
@@ -123,12 +123,12 @@ module.exports = {
           await channel.send({ content: `<@${interaction.member.user.id}>`, embeds:[bugembed] });
         })();
       }else if (selectedValue === 'question') {
-        const categoryID = '1128279885736050808';
+        const categoryID = '1206694812456329238';
       
         (async () => {
           const channel = await interaction.guild.channels.create({
             name: `${interaction.user.username}-ticket`,
-            parent: categoryID,
+            parent: '1206694812456329238',
             type: ChannelType.GuildText,
             permissionOverwrites: [
               {
@@ -141,7 +141,7 @@ module.exports = {
               },
             ],
           });
-
+          
           const bugembed = new EmbedBuilder()
           .setTitle('Ticket')
           .setDescription('Please let us know,how we can help you!')
@@ -153,7 +153,7 @@ module.exports = {
           await channel.send({ content: `<@${interaction.member.user.id}>`, embeds:[bugembed] });
         })();
       }else if (selectedValue === 'application') {
-        const categoryID = '1129094830081978481';
+        const categoryID = '1206694812456329238';
       
         (async () => {
           const channel = await interaction.guild.channels.create({

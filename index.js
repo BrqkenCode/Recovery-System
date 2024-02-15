@@ -45,47 +45,7 @@ for (const file of commandFiles) {
 }
 
 
-client.on('ready', () => {
-  const aboutID= '1124766420690018324';
-  const aboutchannel = client.channels.cache.get(aboutID);
 
-  const ruleID = '1124765417957761054'
-  const rulechan = client.channels.cache.get(ruleID);
-  console.log(`Logged in as ${client.user.tag}`);
-  client.user.setPresence({
-    activities: [{ name: `Recovery-Studios V1`, type: ActivityType.Custom }],
-    status: 'dnd',
-  });
-
-  const rulemb = new EmbedBuilder()
-  .setTitle('Server Rules')
-  .setDescription('To ensure a respectful and harmonious community, please adhere to the following rules:')
-  .setColor('#7289DA')
-  .setThumbnail('https://cdn.discordapp.com/attachments/1061023152571961355/1125728746779975770/Kopie_von_Recovery.png')
-  .addFields(
-    { name: '1. Respect and Etiquette', value: 'Treat all members with respect, courtesy, and consideration. Avoid engaging in any form of discriminatory behavior, personal attacks, or derogatory remarks.' },
-    { name: '2. Language and Conduct', value: 'Use appropriate and professional language at all times. Refrain from using offensive, vulgar, or explicit content that may create a hostile environment or make others uncomfortable.' },
-    { name: '3. No Harassment or Bullying', value: 'Harassment, bullying, or any form of targeted negative behavior is strictly prohibited. Everyone should feel safe and accepted within the community.' },
-    { name: '4. No Spamming or Flooding', value: 'Avoid spamming, excessive use of capital letters, or flooding the chat with repetitive or irrelevant content. Respect the flow of conversation and allow others to express their thoughts.' },
-    { name: '5. No NSFW or Inappropriate Content', value: 'Do not share or discuss explicit, pornographic, or otherwise inappropriate content within the community. Keep all discussions and media suitable for all audiences.' },
-    { name: '6. No Advertising or Self-Promotion', value: 'Do not advertise external products, services, or communities without proper authorization. Self-promotion should be limited to designated channels, if allowed.' },
-    { name: '7. Privacy and Personal Information', value: 'Respect the privacy of others. Do not share personal information without explicit consent. Avoid doxing, stalking, or any other intrusive actions that violate privacy rights.' },
-    { name: '8. Follow Staff Instructions', value: 'Cooperate with staff members and follow their instructions. They are here to enforce rules, ensure a positive environment, and address any concerns or issues.' },
-    { name: '9. No Malicious Intent', value: 'Do not engage in or promote any form of hacking, cheating, exploiting, or any activity that may harm the community or compromise the security of individuals or systems.' },
-    { name: '10. Intellectual Property and Copyright', value: 'Respect the intellectual property rights of others. Do not share or distribute copyrighted material, including software, without proper authorization.' },
-    { name: '11. No Impersonation or Misrepresentation', value: 'Do not impersonate or misrepresent yourself as someone else, including staff members or notable individuals. Maintain honesty and integrity within the community.' },
-    { name: '12. Channel Specific Rules', value: 'Adhere to the specific rules and guidelines of each channel. Stay on-topic and avoid discussions or content that are unrelated or inappropriate for the respective channel.' },
-    { name: '13. Reporting and Conflict Resolution', value: 'Report any issues, concerns, or conflicts to the staff members through appropriate channels. Engage in constructive dialogue and follow the recommended conflict resolution processes.' },
-    { name: '14. Compliance with Discord Terms of Service', value: 'Abide by the Discord Terms of Service and Community Guidelines. Any violation of these terms may result in punitive measures, including temporary or permanent suspension from the community.' },
-    { name: '15. Enforcement and Moderation', value: 'The staff members reserve the right to enforce rules, issue warnings, and apply appropriate penalties for violations. Respect their decisions and engage in discussions about rule enforcement privately, if necessary.' }
-  )
-  .setFooter({text:'Recovery Studios - Server Rules'});
-
-
-  rulechan.bulkDelete(1);
-
-  rulechan.send({embeds: [rulemb]})
-});
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
@@ -126,7 +86,7 @@ client.on(Events.InteractionCreate, async interaction => {
     .setEmoji('❌');
 
     
-    const logchannelID = '1127927270548439150';
+    const logchannelID = '1206693622909509665';
     const logchannel = client.channels.cache.get(logchannelID);
     if (!logchannel) {
       console.log(`Log channel not found with ID ${logchannelID}`);
@@ -149,11 +109,11 @@ client.on(Events.InteractionCreate, async interaction => {
       .setTimestamp()
       .setFooter({ text: 'Recoverycord'});
       const row = new ActionRowBuilder().addComponents(approve, decline);
-      const categoryID = '1127943313002078299';
+      const categoryID = '1206693622909509665';
 
       const chann = await interaction.guild.channels.create( {
         name: `${interaction.user.username}-request`,
-        parent: categoryID,
+        parent: '1206694812456329238',
         type: ChannelType.GuildText,
         permissionOverwrites: [
           {
@@ -271,7 +231,7 @@ client.on(Events.InteractionCreate, async interaction => {
       .setTimestamp()
       .setFooter({ text: 'Recoverycord'});
       const row = new ActionRowBuilder().addComponents(approve);
-      const categoryID = '1128279885736050808';
+      const categoryID = '1206694812456329238';
 
       const chann = await interaction.guild.channels.create( {
         name: `${interaction.user.username}-ticket`,
@@ -398,7 +358,7 @@ client.on(Events.InteractionCreate, async interaction => {
     
   
   }else if (customId === 'sub-menu'){
-    const categoryID = '1128279885736050808';
+    const categoryID = '1206694812456329238';
     async function createChan(guild, user, category, selectedOption) {
       const categoryChannel = guild.channels.cache.get(category); // Get the CategoryChannel object
       const userID = user.id;
@@ -428,7 +388,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
         const channel = await interaction.guild.channels.create({
           name: `${interaction.user.username}-ticket`,
-          parent: categoryChannel, // Use the CategoryChannel object
+          parent: 1206694812456329238, // Use the CategoryChannel object
           type: ChannelType.GuildText,
         permissionOverwrites: [
           {
@@ -580,4 +540,4 @@ client.on('guildMemberAdd', (member) => {
 
 
 
-client.login("MTEyNjExNzQxMzEwMDk3ODI0Ng.G65E1f.EcjzGic-09WnP7viIZgg1m48FTHOStDmLwVYj0");
+client.login("MTEyNjExNzQxMzEwMDk3ODI0Ng.GWbXqy.xojm6fH37GspHIuRsnCXYlQec5oeVsFKvCGwbQ");
