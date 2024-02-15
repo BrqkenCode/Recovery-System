@@ -21,7 +21,7 @@ client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 const childProcess = spawn('node', ['slashcommandHandler.js']);
-
+const categoryID = '1207783435838423050';
 childProcess.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
 });
@@ -109,11 +109,11 @@ client.on(Events.InteractionCreate, async interaction => {
       .setTimestamp()
       .setFooter({ text: 'Recoverycord'});
       const row = new ActionRowBuilder().addComponents(approve, decline);
-      const categoryID = '1206693622909509665';
+      
 
       const chann = await interaction.guild.channels.create( {
         name: `${interaction.user.username}-request`,
-        parent: '1206694812456329238',
+        parent: categoryID,
         type: ChannelType.GuildText,
         permissionOverwrites: [
           {
@@ -231,7 +231,6 @@ client.on(Events.InteractionCreate, async interaction => {
       .setTimestamp()
       .setFooter({ text: 'Recoverycord'});
       const row = new ActionRowBuilder().addComponents(approve);
-      const categoryID = '1206694812456329238';
 
       const chann = await interaction.guild.channels.create( {
         name: `${interaction.user.username}-ticket`,
@@ -358,7 +357,6 @@ client.on(Events.InteractionCreate, async interaction => {
     
   
   }else if (customId === 'sub-menu'){
-    const categoryID = '1206694812456329238';
     async function createChan(guild, user, category, selectedOption) {
       const categoryChannel = guild.channels.cache.get(category); // Get the CategoryChannel object
       const userID = user.id;
@@ -493,7 +491,7 @@ function loadOrdersFromFile() {
 
 
 client.on('guildMemberAdd', (member) => {
-  const welcomeID = '1124765194539769928'
+  const welcomeID = '1207782115681501246'
   const welcomechannel = client.channels.cache.get(welcomeID);
   const welcomeMessages = [
     'Welcome to our server! We hope you enjoy your stay.',
@@ -533,11 +531,4 @@ client.on('guildMemberAdd', (member) => {
 
 });
 
-
-
-
-
-
-
-
-client.login("MTEyNjExNzQxMzEwMDk3ODI0Ng.GWbXqy.xojm6fH37GspHIuRsnCXYlQec5oeVsFKvCGwbQ");
+client.login("OTg1Mjk2Njc2MTk1NTY1NTg5.GldRhJ.25K8wCyl_GkTXg_ZRgRj661ysefASqaaEFGlxo");
